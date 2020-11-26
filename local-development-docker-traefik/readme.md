@@ -9,7 +9,7 @@ I will walk you through my local development setup with docker and traefik to so
 
 We will install a reverse proxy on our local machine to add a domain to our projects. We will do this by using Traefik (https://traefik.io/traefik).
 Traefik calls itself a cloud native application proxy.
-It is ideal for using in cloud context like Kubernetes or docker. Traefik itself is also a simple docker container. And this will be the only container to expose a port to our docker host. The container of the different projects and the traefik container will be in the same docker network. Traefik will forward the requests from the client to the corresponding container.
+It is ideal for using in cloud context like Kubernetes or docker. Traefik itself is also a simple docker container. And this will be the only container to expose a port to our docker host. The containers of the different projects and the traefik container will be in the same docker network. Traefik will forward the requests from the client to the corresponding container.
 
 ![Concept skatch](https://dev-to-uploads.s3.amazonaws.com/i/oxq2hx461j78ndvzqq38.jpg)
 
@@ -21,15 +21,15 @@ It is ideal for using in cloud context like Kubernetes or docker. Traefik itself
 
 ## Setup
 
-Our first step will be creating a docker network.
+Our first step will be to create a docker network.
 We will call it "web". We are creating this network so that different docker-compose stacks can connect to each other.
 
 ```
 docker network create web
 ```
 
-Now we are start our traefik container.
-We can do this by simple run a docker command but in this case ware a using a small docker-compose file to configure our container.
+Now we are starting our traefik container.
+We could do this by running a simple docker command, but in this case ware a using a small docker-compose file to configure our container.
 
 ```
 version: '3'
@@ -98,7 +98,7 @@ Instead of exposing the nginx port directly to our host we proxy it through trae
 We can also see it in the traefik dashboard.
 ![Traefik dashboard](https://dev-to-uploads.s3.amazonaws.com/i/pmhz3aw76g41b8j1s29e.png)
 
-To create another project copy the myproject folder, adjust the docker-compose.yml and start it up. Now we have a second project running for example under mysecondproject.localhost also on port 80, and we don't have to worry about conflicting ports in our projects and can access them by their name.
+To create another project copy the myproject folder, adjust the docker-compose.yml and start it up. Now we have a second project running, for example under mysecondproject.localhost also on port 80, and we don't have to worry about conflicting ports in our projects and can access them by their name.
 
 ## References
 - Traefik: https://traefik.io/traefik
