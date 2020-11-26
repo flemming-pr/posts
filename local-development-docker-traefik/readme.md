@@ -22,7 +22,7 @@ It is ideal for using in cloud dontext like kubernetes or docker. Traefik itself
 ## Setup
 
 Our first step will be creating a docker network.
-We will call it "web".
+We will call it "web". We are creating this network so that different docker-compose stacks can connect to each other.
 
 ```
 docker network create web
